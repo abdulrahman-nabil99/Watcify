@@ -1,0 +1,14 @@
+{
+  "name": "search-for-movie-project",
+  "version": "1.0.0",
+  "description": "Application to search for movies",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist --no-scope-hoist"
+  },
+  "author": "Abdulrahman Nabil",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.10.3"
+  }
+}
