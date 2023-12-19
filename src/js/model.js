@@ -58,9 +58,11 @@ export const loadShow = async function (id) {
  * @param {*} page page to get result from
  * @returns
  */
-export const getSearchResults = async function (query, page) {
+export const getSearchResults = async function (
+  page,
+  query = showObj.search.query
+) {
   try {
-    if (!query) return;
     const data = await AJAX(`${API_URL}s=${query}&page=${page}`);
     if (!data.Response === "True") throw err;
     // edit data

@@ -43,7 +43,7 @@ const controlSearch = async function (page = 1) {
     const query = searchView._getQuery();
     if (!query) return;
     // get search result
-    const searchResult = await model.getSearchResults(query, page);
+    const searchResult = await model.getSearchResults(page, query);
     // render data
     searchView._render(searchResult);
     // render pagination
@@ -51,6 +51,14 @@ const controlSearch = async function (page = 1) {
   } catch (err) {
     searchView._renderErr();
   }
+};
+const controlPagination = async function (page) {
+  // get search result
+  const searchResult = await model.getSearchResults(page);
+  // render data
+  searchView._render(searchResult);
+  // render pagination
+  paginationView._render(searchResult);
 };
 
 const controlLikedList = function () {
@@ -75,7 +83,7 @@ const init = function () {
   laterView._render(model.showObj.laterShows);
   showView._addLinkChangeHandler(controlShow);
   searchView._addSearchHandler(controlSearch);
-  paginationView._addPageBtnsHandler(controlSearch);
+  paginationView._addPageBtnsHandler(controlPagination);
   likedView.likeHandler(controlLikedList);
   laterView.laterHandler(controlLaterList);
   // add move to top
